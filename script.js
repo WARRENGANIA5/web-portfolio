@@ -24,12 +24,7 @@ $(document).ready(function(){
         $('.menu-btn i').toggleClass("active");
     });
     // typing text animation script
-    var typed = new Typed(".typing", {
-        
-        typeSpeed: 100,
-        backSpeed: 40,
-        loop: true
-    });
+   
     var typed = new Typed(".typing-2", {
         strings: ["Project Manager"],
         typeSpeed: 100,
@@ -60,42 +55,3 @@ $(document).ready(function(){
         }
     });
 });
-const words = [
-    "Creative Web Developer",
-    "UI/UX Designer",
-    "Frontend Engineer",
-    "Freelancer"
-];
-
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-const typingElement = document.querySelector(".animated-text");
-
-function typeEffect() {
-    const currentWord = words[wordIndex];
-
-    if (!isDeleting) {
-        typingElement.textContent = currentWord.substring(0, charIndex + 1);
-        charIndex++;
-
-        if (charIndex === currentWord.length) {
-            setTimeout(() => isDeleting = true, 1000); // pause before deleting
-        }
-    } 
-    else {
-        typingElement.textContent = currentWord.substring(0, charIndex - 1);
-        charIndex--;
-
-        if (charIndex === 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length; // next word
-        }
-    }
-
-    const speed = isDeleting ? 80 : 120;  
-    setTimeout(typeEffect, speed);
-}
-
-typeEffect();
